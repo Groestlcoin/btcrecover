@@ -306,5 +306,93 @@
     "priority": 10,
     "denominator": 100000000,
     "network_overrides": null
+  },
+  "groestlcoind": {
+    "provider": "groestlcoind",
+    "network": "bitcoin",
+    "client_class": "GroestlcoindClient",
+    "provider_coin_id": "",
+    "url": "",
+    "api_key": "",
+    "priority": 20,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "groestlcoind.testnet": {
+    "provider": "groestlcoind",
+    "network": "testnet",
+    "client_class": "GroestlcoindClient",
+    "provider_coin_id": "",
+    "url": "",
+    "api_key": "",
+    "priority": 20,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "groesltcoinesplora": {
+    "provider": "groesltcoinesplora",
+    "network": "groestlcoin",
+    "client_class": "BlockstreamClient",
+    "provider_coin_id": "",
+    "url": "https://esplora.groestlcoin.org/api/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "groesltcoinesplora.testnet": {
+    "provider": "groesltcoinesplora",
+    "network": "groestlcoin.testnet",
+    "client_class": "BlockstreamClient",
+    "provider_coin_id": "",
+    "url": "https://esplora.groestlcoin.org/testnet/api/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "groestlsight": {
+    "provider": "groestlsight",
+    "network": "groestlcoin",
+    "client_class": "InsightDashClient",
+    "provider_coin_id": "",
+    "url": "https://groestlsight.groestlcoin.org/api/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "groestlsight.testnet": {
+    "provider": "groestlsight",
+    "network": "groestlcoin.testnet",
+    "client_class": "InsightDashClient",
+    "provider_coin_id": "",
+    "url": "https://groestlsight-test.groestlcoin.org/api/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "cryptoid.groestlcoin": {
+    "provider": "cryptoid",
+    "network": "groestlcoin",
+    "client_class": "CryptoID",
+    "provider_coin_id": "grs",
+    "url": "https://chainz.cryptoid.info/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
+  },
+  "cryptoid.groestlcoin.testnet": {
+    "provider": "cryptoid",
+    "network": "groestlcoin.testnet",
+    "client_class": "CryptoID",
+    "provider_coin_id": "grs-test",
+    "url": "https://chainz.cryptoid.info/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
   }
 }
