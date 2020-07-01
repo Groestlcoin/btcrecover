@@ -482,5 +482,16 @@
     "priority": 10,
     "denominator": 100000000,
     "network_overrides": null
+  },
+  "blockchair.groestlcoin": {
+    "provider": "blockchair",
+    "network": "groestlcoin",
+    "client_class": "BlockChairClient",
+    "provider_coin_id": "",
+    "url": "https://api.blockchair.com/groestlcoin/",
+    "api_key": "",
+    "priority": 10,
+    "denominator": 100000000,
+    "network_overrides": null
   }
 }
