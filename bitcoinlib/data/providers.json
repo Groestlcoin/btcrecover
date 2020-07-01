@@ -307,32 +307,10 @@
     "denominator": 100000000,
     "network_overrides": null
   },
-  "groestlcoind": {
-    "provider": "groestlcoind",
-    "network": "bitcoin",
-    "client_class": "GroestlcoindClient",
-    "provider_coin_id": "",
-    "url": "",
-    "api_key": "",
-    "priority": 20,
-    "denominator": 100000000,
-    "network_overrides": null
-  },
-  "groestlcoind.testnet": {
-    "provider": "groestlcoind",
-    "network": "testnet",
-    "client_class": "GroestlcoindClient",
-    "provider_coin_id": "",
-    "url": "",
-    "api_key": "",
-    "priority": 20,
-    "denominator": 100000000,
-    "network_overrides": null
-  },
-  "groesltcoinesplora": {
-    "provider": "groesltcoinesplora",
+  "groestlcoinesplora": {
+    "provider": "groestlcoinesplora",
     "network": "groestlcoin",
-    "client_class": "BlockstreamClient",
+    "client_class": "GroestlcoinEsploraClient",
     "provider_coin_id": "",
     "url": "https://esplora.groestlcoin.org/api/",
     "api_key": "",
@@ -340,10 +318,10 @@
     "denominator": 100000000,
     "network_overrides": null
   },
-  "groesltcoinesplora.testnet": {
-    "provider": "groesltcoinesplora",
-    "network": "groestlcoin.testnet",
-    "client_class": "BlockstreamClient",
+  "groestlcoinesplora.testnet": {
+    "provider": "groestlcoinesplora",
+    "network": "groestlcoin_testnet",
+    "client_class": "GroestlcoinEsploraClient",
     "provider_coin_id": "",
     "url": "https://esplora.groestlcoin.org/testnet/api/",
     "api_key": "",
@@ -354,7 +332,7 @@
   "groestlsight": {
     "provider": "groestlsight",
     "network": "groestlcoin",
-    "client_class": "InsightDashClient",
+    "client_class": "GroestlsightClient",
     "provider_coin_id": "",
     "url": "https://groestlsight.groestlcoin.org/api/",
     "api_key": "",
@@ -364,8 +342,8 @@
   },
   "groestlsight.testnet": {
     "provider": "groestlsight",
-    "network": "groestlcoin.testnet",
-    "client_class": "InsightDashClient",
+    "network": "groestlcoin_testnet",
+    "client_class": "GroestlsightClient",
     "provider_coin_id": "",
     "url": "https://groestlsight-test.groestlcoin.org/api/",
     "api_key": "",
@@ -386,7 +364,7 @@
   },
   "cryptoid.groestlcoin.testnet": {
     "provider": "cryptoid",
-    "network": "groestlcoin.testnet",
+    "network": "groestlcoin_testnet",
     "client_class": "CryptoID",
     "provider_coin_id": "grs-test",
     "url": "https://chainz.cryptoid.info/",

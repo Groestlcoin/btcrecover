@@ -55,17 +55,17 @@ def _read_from_config(configparser, section, value, fallback=None):
 
 class GroestlcoindClient(BaseClient):
     """
-    Class to interact with groestlcoind, the Bitcoin deamon
+    Class to interact with groestlcoind, the Groestlcoin deamon
     """
 
     @staticmethod
-    def from_config(configfile=None, network='bitcoin'):
+    def from_config(configfile=None, network='groestlcoin'):
         """
         Read settings from groestlcoind config file
 
         :param configfile: Path to config file. Leave empty to look in default places
         :type: str
-        :param network: Bitcoin mainnet or testnet. Default is bitcoin mainnet
+        :param network: Groestlcoin mainnet or testnet. Default is groestlcoin mainnet
         :type: str
 
         :return GroestlcoindClient:
@@ -74,16 +74,16 @@ class GroestlcoindClient(BaseClient):
             config = configparser.ConfigParser(strict=False)
         except TypeError:
             config = configparser.ConfigParser()
-        config_fn = 'bitcoin.conf'
+        config_fn = 'groestlcoin.conf'
         if isinstance(network, Network):
             network = network.name
         if network == 'testnet':
-            config_fn = 'bitcoin-testnet.conf'
+            config_fn = 'groestlcoin-testnet.conf'
 
         cfn = None
         if not configfile:
-            config_locations = ['~/.bitcoinlib', '~/.bitcoin', '~/Application Data/Bitcoin',
-                                '~/Library/Application Support/Bitcoin']
+            config_locations = ['~/.groestlcoinlib', '~/.groestlcoin', '~/Application Data/Groestlcoin',
+                                '~/Library/Application Support/Groestlcoin']
             for location in config_locations:
                 cfn = Path(location, config_fn).expanduser()
                 if cfn.exists():
@@ -91,8 +91,8 @@ class GroestlcoindClient(BaseClient):
         else:
             cfn = Path(BCL_DATA_DIR, 'config', configfile)
         if not cfn or not cfn.is_file():
-            raise ConfigError("Config file %s not found. Please install bitcoin client and specify a path to config "
-                              "file if path is not default. Or place a config file in .bitcoinlib/bitcoin.conf to "
+            raise ConfigError("Config file %s not found. Please install groestlcoin client and specify a path to config "
+                              "file if path is not default. Or place a config file in .groestlcoinlib/groestlcoin.conf to "
                               "reference to an external server." % cfn)
 
         try:
@@ -120,15 +120,15 @@ class GroestlcoindClient(BaseClient):
         url = "http://%s:%s@%s:%s" % (config.get('rpc', 'rpcuser'), config.get('rpc', 'rpcpassword'), server, port)
         return GroestlcoindClient(network, url)
 
-    def __init__(self, network='bitcoin', base_url='', denominator=100000000, *args):
+    def __init__(self, network='groestlcoin', base_url='', denominator=100000000, *args):
         """
-        Open connection to bitcoin node
+        Open connection to groestlcoin node
 
-        :param network: Bitcoin mainnet or testnet. Default is bitcoin mainnet
+        :param network: Groestlcoin mainnet or testnet. Default is groestlcoin mainnet
         :type: str
         :param base_url: Connection URL in format http(s)://user:password@host:port.
         :type: str
-        :param denominator: Denominator for this currency. Should be always 100000000 (satoshis) for bitcoin
+        :param denominator: Denominator for this currency. Should be always 100000000 (gros) for groestlcoin
         :type: str
         """
         if isinstance(network, Network):
@@ -139,11 +139,11 @@ class GroestlcoindClient(BaseClient):
             network = bdc.network
         if len(base_url.split(':')) != 4:
             raise ConfigError("Groestlcoind connection URL must be of format 'http(s)://user:password@host:port,"
-                              "current format is %s. Please set url in providers.json file or check bitcoin config "
+                              "current format is %s. Please set url in providers.json file or check groestlcoin config "
                               "file" % base_url)
         if 'password' in base_url:
             raise ConfigError("Invalid password in groestlcoind provider settings. "
-                              "Please replace default password and set url in providers.json or bitcoin.conf file")
+                              "Please replace default password and set url in providers.json or groestlcoin.conf file")
         _logger.info("Connect to groestlcoind on %s" % base_url)
         self.proxy = AuthServiceProxy(base_url)
         super(self.__class__, self).__init__(network, PROVIDERNAME, base_url, denominator, *args)
@@ -241,7 +241,7 @@ if __name__ == '__main__':
     from pprint import pprint
 
     # 1. Connect by specifying connection URL
-    # base_url = 'http://bitcoinrpc:passwd@host:8332'
+    # base_url = 'http://RpcUsername:RpcPass@host:1441'
     # bdc = GroestlcoindClient(base_url=base_url)
 
     # 2. Or connect using default settings or settings from config file

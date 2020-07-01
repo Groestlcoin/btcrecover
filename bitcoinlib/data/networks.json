@@ -251,7 +251,7 @@
   {
     "description": "Groestlcoin",
     "currency_name": "groestlcoin",
-    "currency_name_plural": "Groestlcoins",
+    "currency_name_plural": "groestlcoins",
     "currency_symbol": "Ǥ",
     "currency_code": "GRS",
     "prefix_address": "24",

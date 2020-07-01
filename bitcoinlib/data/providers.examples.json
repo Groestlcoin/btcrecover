@@ -417,8 +417,8 @@
     "denominator": 100000000,
     "network_overrides": null
   },
-  "groesltcoinesplora": {
-    "provider": "groesltcoinesplora",
+  "groestlcoinesplora": {
+    "provider": "groestlcoinesplora",
     "network": "groestlcoin",
     "client_class": "GroestlcoinEsploraClient",
     "provider_coin_id": "",
@@ -428,9 +428,9 @@
     "denominator": 100000000,
     "network_overrides": null
   },
-  "groesltcoinesplora.testnet": {
-    "provider": "groesltcoinesplora",
-    "network": "groestlcoin.testnet",
+  "groestlcoinesplora.testnet": {
+    "provider": "groestlcoinesplora",
+    "network": "groestlcoin_testnet",
     "client_class": "GroestlcoinEsploraClient",
     "provider_coin_id": "",
     "url": "https://esplora.groestlcoin.org/testnet/api/",
@@ -452,7 +452,7 @@
   },
   "groestlsight.testnet": {
     "provider": "groestlsight",
-    "network": "groestlcoin.testnet",
+    "network": "groestlcoin_testnet",
     "client_class": "GroestlsightClient",
     "provider_coin_id": "",
     "url": "https://groestlsight-test.groestlcoin.org/api/",
@@ -474,7 +474,7 @@
   },
   "cryptoid.groestlcoin.testnet": {
     "provider": "cryptoid",
-    "network": "groestlcoin.testnet",
+    "network": "groestlcoin_testnet",
     "client_class": "CryptoID",
     "provider_coin_id": "grs-test",
     "url": "https://chainz.cryptoid.info/",
