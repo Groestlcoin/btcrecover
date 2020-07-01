@@ -397,7 +397,7 @@
   },
   "groestlcoind": {
     "provider": "groestlcoind",
-    "network": "bitcoin",
+    "network": "groestlcoin",
     "client_class": "GroestlcoindClient",
     "provider_coin_id": "",
     "url": "",
@@ -408,7 +408,7 @@
   },
   "groestlcoind.testnet": {
     "provider": "groestlcoind",
-    "network": "testnet",
+    "network": "groestlcoin_testnet",
     "client_class": "GroestlcoindClient",
     "provider_coin_id": "",
     "url": "",
