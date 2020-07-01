@@ -108,9 +108,9 @@ class GroestlcoindClient(BaseClient):
         if _read_from_config(config, 'rpc', 'rpcpassword') == 'specify_rpc_password':
             raise ConfigError("Please update config settings in %s" % cfn)
         if network == 'testnet':
-            port = 18332
+            port = 17766
         else:
-            port = 8332
+            port = 1441
         port = _read_from_config(config, 'rpc', 'rpcport', port)
         server = '127.0.0.1'
         server = _read_from_config(config, 'rpc', 'rpcconnect', server)
