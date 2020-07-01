@@ -41,7 +41,8 @@ def supportedChains(magic):
         b"\xfa\xbf\xb5\xda":1,    #Vertcoin
         b"\xf7\xa7\x7e\xff":0,    #Verge
         b"\xc0\xc0\xc0\xc0":0,    #dogecoin
-        b"\xfa\xc3\xb6\xda":1     #digibyte
+        b"\xfa\xc3\xb6\xda":1,    #digibyte
+        b"\xf9\xbe\xb4\xd4":1     #groestlcoin
         }
     return switcher.get(magic,-1)
         
