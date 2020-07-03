@@ -28,6 +28,7 @@ import binascii
 import unicodedata
 import struct
 from bitcoinlib.main import *
+import groestlcoin_hash
 _logger = logging.getLogger(__name__)
 
 
@@ -474,6 +475,34 @@ def addr_base58_to_pubkeyhash(address, as_hex=False):
     else:
         return pkh[1:]
 
+def grs_addr_base58_to_pubkeyhash(address, as_hex=False):
+    """
+    Convert Base58 encoded address to public key hash (Groestlcoin)
+
+    >>> addr_base58_to_pubkeyhash('142Zp9WZn9Fh4MV8F3H5Dv4Rbg7Ja1sPWZ', as_hex=True)
+    '21342f229392d7c9ed82c932916cee6517fbc9a2'
+
+    :param address: Crypto currency address in base-58 format
+    :type address: str, bytes
+    :param as_hex: Output as hexstring
+    :type as_hex: bool
+
+    :return bytes, str: Public Key Hash
+    """
+
+    try:
+        address = change_base(address, 58, 256, 25)
+    except EncodingError as err:
+        raise EncodingError("Invalid address %s: %s" % (address, err))
+    check = address[-4:]
+    pkh = address[:-4]
+    #x = to_bytes(pkh, 'utf8')
+    checksum = groestlcoin_hash.getHash(pkh, len(pkh))[0:4]
+    assert (check == checksum), "Invalid GRS address, checksum incorrect"
+    if as_hex:
+        return change_base(pkh, 256, 16)[2:]
+    else:
+        return pkh[1:]
 
 def addr_bech32_to_pubkeyhash(bech, prefix=None, include_witver=False, as_hex=False):
     """

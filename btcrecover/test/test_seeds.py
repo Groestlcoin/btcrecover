@@ -416,6 +416,10 @@ class TestRecoveryFromAddress(unittest.TestCase):
         self.address_tester(btcrseed.WalletBIP39, "DANb1e9B2WtHJNDJUsiu1fTrtAzGJhqkPa", 2,
             "element entire sniff tired miracle solve shadow scatter hello never tank side sight isolate sister uniform advice pen praise soap lizard festival connect baby", "m/44'/3'/0'/0")
 
+    def test_bip44_addr_GRS(self):
+        self.address_tester(btcrseed.WalletBIP39, "FWoJyPj8sFzBN1dVdLfG8ozrVLRjwZaC78", 2,
+            "element entire sniff tired miracle solve shadow scatter hello never tank side sight isolate sister uniform advice pen praise soap lizard festival connect baby", "m/44'/17'/0'/0")
+
     @unittest.skipUnless(can_load_keccak(), "requires pycryptodome")
     def test_ethereum_addr(self):
         self.address_tester(btcrseed.WalletEthereum, "0x9544a5BD7D9AACDc0A12c360C1ec6182C84bab11", 3,
