@@ -26,7 +26,7 @@ from bitcoinlib.transactions import Transaction
 from bitcoinlib.encoding import to_hexstring
 
 PROVIDERNAME = 'groestlcoinesplora'
-# Please note: In the Blockstream API, the first couple of Bitcoin blocks are not correctly indexed,
+# Please note: In the Blockstream API, the first couple of Groestlcoin blocks are not correctly indexed,
 # so transactions from these blocks are missing.
 
 _logger = logging.getLogger(__name__)
