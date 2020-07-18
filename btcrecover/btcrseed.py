@@ -44,6 +44,7 @@ from eth_hash.auto import keccak
 import binascii
 import copy
 import datetime
+import groestlcoin_hash
 
 # Order of the base point generator, from SEC 2
 GENERATOR_ORDER = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
@@ -116,7 +117,8 @@ def base58check_to_bytes(base58_rep, expected_size):
         raise ValueError("prepended zeros mismatch")
 
     if hashlib.sha256(hashlib.sha256(all_bytes[:-4]).digest()).digest()[:4] != all_bytes[-4:]:
-        raise ValueError("base58 check code mismatch")
+        if groestlcoin_hash.getHash(all_bytes[:-4], len(all_bytes[:-4]))[:4] != all_bytes[-4:]:
+            raise ValueError("base58 check code mismatch")
 
     return all_bytes[:-4]
 
@@ -212,7 +214,12 @@ def convert_to_xpub(input_mpk):
         output_mpk_b58 = b'\x04\x88\xb2\x1e' + input_mpk_b58[4:]
         output_mpk = base58.b58encode_check(output_mpk_b58)
     except:
-        pass
+        try:
+            input_mpk_b58 = base58.b58grsdecode_check(input_mpk)
+            output_mpk_b58 = b'\x04\x88\xb2\x1e' + input_mpk_b58[4:]
+            output_mpk = base58.b58grsencode_check(output_mpk_b58)
+        except:
+            pass
 
     return output_mpk
 
@@ -637,7 +644,7 @@ class WalletBIP32(WalletBase):
         if mpk:
             mpk = convert_to_xpub(mpk)
             if not mpk.startswith("xpub"):
-                raise ValueError("the BIP32 extended public key must begin with 'xpub, ypub or zpub'")
+                raise ValueError("the BIP32 extended public key must begin with 'xpub, ypub or zpub'" + " " + mpk)
             mpk = base58check_to_bip32(mpk)
             # (it's processed more later)
 
@@ -772,6 +779,9 @@ class WalletBIP32(WalletBase):
                 print("Loaded", len(self._known_hash160s), "addresses from database ...")
 
         return self
+
+    #def convert_to_xpub(self, mpk):
+    #    convert_to_xpub(mpk)
 
     # Performs basic checks so that clearly invalid mnemonic_ids can be completely skipped
     @staticmethod

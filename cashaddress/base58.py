@@ -36,6 +36,7 @@ with the bitcoin network.
 __version__ = '0.2.5'
 
 from hashlib import sha256
+import groestlcoin_hash
 
 # 58 character alphabet used
 alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
@@ -127,6 +128,25 @@ def b58decode_check(v):
     result = b58decode(v)
     result, check = result[:-4], result[-4:]
     digest = sha256(sha256(result).digest()).digest()
+
+    if check != digest[:4]:
+        raise ValueError("Invalid checksum")
+
+    return result
+
+def b58grsencode_check(v):
+    '''Encode a string using Base58 GRS with a 4 character checksum'''
+
+    digest = groestlcoin_hash.getHash(v, len(v))
+    return b58encode(v + digest[:4])
+
+
+def b58grsdecode_check(v):
+    '''Decode and verify the checksum of a Base58 GRS encoded string'''
+
+    result = b58decode(v)
+    result, check = result[:-4], result[-4:]
+    digest = groestlcoin_hash.getHash(result, len(result))
 
     if check != digest[:4]:
         raise ValueError("Invalid checksum")
